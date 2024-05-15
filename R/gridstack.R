@@ -22,7 +22,17 @@ gridstack <- function(..., options = list(), width = NULL, height = NULL, elemen
     width = width,
     height = height,
     package = "gridstackr",
-    elementId = elementId
+    elementId = elementId,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      defaultWidth = "100%",
+      viewer.defaultHeight = "100%",
+      viewer.defaultWidth = "100%",
+      knitr.figure = FALSE,
+      viewer.suppress = FALSE,
+      browser.external = TRUE,
+      browser.fill = TRUE,
+      padding = 10
+    )
   )
 }
 
