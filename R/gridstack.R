@@ -6,6 +6,8 @@
 #' @importFrom htmltools renderTags
 #'
 #' @export
+#'
+#' @example example/gridstack.R
 gridstack <- function(...,
                       options = list(),
                       width = NULL,
