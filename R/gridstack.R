@@ -2,10 +2,15 @@
 #'
 #' Mobile-friendly modern Typescript library for dashboard layout and creation. Making a drag-and-drop, multi-column responsive dashboard has never been easier.
 #'
-#' @import htmlwidgets
+#' @importFrom htmlwidgets createWidget sizingPolicy
+#' @importFrom htmltools renderTags
 #'
 #' @export
-gridstack <- function(..., options = list(), width = NULL, height = NULL, elementId = NULL) {
+gridstack <- function(...,
+                      options = list(),
+                      width = NULL,
+                      height = NULL,
+                      elementId = NULL) {
 
   items <- list(...)
   rendered_items <- renderTags(x = items)
@@ -27,11 +32,12 @@ gridstack <- function(..., options = list(), width = NULL, height = NULL, elemen
       defaultWidth = "100%",
       viewer.defaultHeight = "100%",
       viewer.defaultWidth = "100%",
+      viewer.fill = FALSE,
       knitr.figure = FALSE,
       viewer.suppress = FALSE,
       browser.external = TRUE,
-      browser.fill = TRUE,
-      padding = 10
+      browser.fill = FALSE,
+      padding = 5
     )
   )
 }
@@ -62,7 +68,7 @@ gridstack <- function(..., options = list(), width = NULL, height = NULL, elemen
 #'   is useful if you want to save an expression in a variable.
 #'
 #' @name gridstack-shiny
-#'
+#' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
 #' @export
 gridstackOutput <- function(outputId, width = "100%", height = "400px"){
   htmlwidgets::shinyWidgetOutput(outputId, "gridstack", width, height, package = "gridstackr")
