@@ -2,12 +2,16 @@
 #'
 #' Mobile-friendly modern Typescript library for dashboard layout and creation. Making a drag-and-drop, multi-column responsive dashboard has never been easier.
 #'
+#' @param ... Items created with [gs_item()] to be placed in the grid.
+#' @param options List of options for the grid.
+#' @inheritParams htmlwidgets::createWidget
+#'
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @importFrom htmltools renderTags
 #'
 #' @export
 #'
-#' @example example/gridstack.R
+#' @example examples/gridstack.R
 gridstack <- function(...,
                       options = list(),
                       width = NULL,

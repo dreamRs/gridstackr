@@ -6,6 +6,43 @@
 \usage{
 gridstack(..., options = list(), width = NULL, height = NULL, elementId = NULL)
 }
+\arguments{
+\item{...}{Items created with \code{\link[=gs_item]{gs_item()}} to be placed in the grid.}
+
+\item{options}{List of options for the grid.}
+
+\item{width}{Fixed width for widget (in css units). The default is
+\code{NULL}, which results in intelligent automatic sizing based on the
+widget's container.}
+
+\item{height}{Fixed height for widget (in css units). The default is
+\code{NULL}, which results in intelligent automatic sizing based on the
+widget's container.}
+
+\item{elementId}{Use an explicit element ID for the widget (rather than an
+automatically generated one). Useful if you have other JavaScript that
+needs to explicitly discover and interact with a specific widget instance.}
+}
 \description{
 Mobile-friendly modern Typescript library for dashboard layout and creation. Making a drag-and-drop, multi-column responsive dashboard has never been easier.
+}
+\examples{
+library(gridstackr)
+
+gridstack(
+  gs_item("1", w = 4, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("2", w = 4, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("3", w = 4, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("4", w = 12, style = "border-radius: 8px; border: 1px solid red")
+)
+
+gridstack(
+  options = list(minRow = 2, margin = "0.2rem"),
+  gs_item("1", w = 4, h = 2, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("2", w = 5, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("3", w = 5, x = 4, y = 2, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("4", h = 2, w = 3, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("5", w = 6, x = 0, y = 3, style = "border-radius: 8px; border: 1px solid red"),
+  gs_item("6", w = 6, x = 6, y = 3, style = "border-radius: 8px; border: 1px solid red")
+)
 }
