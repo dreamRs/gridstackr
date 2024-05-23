@@ -9,13 +9,14 @@
 #'  The widget can still be dragged or resized by the user. You need to add noResize and noMove attributes to completely lock the widget.
 #' @param noResize disable element resizing.
 #' @param noMove disable element moving.
+#' @param class_item,class_content,style_item,style_content CSS class or CSS styles to apply to the item container or the content.
 #'
 #' @return A `list()` with a `shiny.tag` class.
 #' @export
 #'
 #' @importFrom htmltools tags
 #'
-#' @examples
+#' @example examples/gs_item.R
 gs_item <- function(...,
                     x = NULL,
                     y = NULL,
@@ -27,7 +28,11 @@ gs_item <- function(...,
                     minH = NULL,
                     locked = NULL,
                     noResize = NULL,
-                    noMove = NULL) {
+                    noMove = NULL,
+                    class_item = NULL,
+                    class_content = NULL,
+                    style_item = NULL,
+                    style_content = NULL) {
   tags$div(
     class = "grid-stack-item grid-stack-item-edit",
     `gs-x` = x,
@@ -41,8 +46,12 @@ gs_item <- function(...,
     `gs-locked` = locked,
     `gs-no-resize` = noResize,
     `gs-no-move` = noMove,
+    class = class_item,
+    style = style_item,
     tags$div(
-      class = "grid-stack-item-content grid-stack-item-content-edit",
+      class = "grid-stack-item-content",
+      class = class_content,
+      style = style_content,
       ...
     )
   )

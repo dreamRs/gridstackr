@@ -4,6 +4,7 @@
 #'
 #' @param ... Items created with [gs_item()] to be placed in the grid.
 #' @param options List of options for the grid.
+#' @param bg Background color.
 #' @inheritParams htmlwidgets::createWidget
 #'
 #' @importFrom htmlwidgets createWidget sizingPolicy
@@ -14,6 +15,7 @@
 #' @example examples/gridstack.R
 gridstack <- function(...,
                       options = list(),
+                      bg = "#e5e7eb",
                       width = NULL,
                       height = NULL,
                       elementId = NULL) {
@@ -23,7 +25,8 @@ gridstack <- function(...,
 
   x <- list(
     html = rendered_items$html,
-    options = options
+    options = options,
+    bg = bg
   )
 
   htmlwidgets::createWidget(

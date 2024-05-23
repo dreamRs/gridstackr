@@ -20,6 +20,7 @@ HTMLWidgets.widget({
 
         el.classList.add("grid-stack");
         el.classList.add("grid-stack-edit");
+        el.style.background = x.bg;
         el.innerHTML = x.html;
 
         grid = GridStack.init(x.options, el);
@@ -48,11 +49,9 @@ if (HTMLWidgets.shinyMode) {
 
   // add a widget
   Shiny.addCustomMessageHandler("gridstackr-add-widget", function(obj) {
-    console.log(obj);
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
-      console.log(grid);
-      grid.addWidget(obj.options);
+      grid.addWidget(obj.data.options);
     }
   });
 

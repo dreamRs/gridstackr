@@ -1,16 +1,43 @@
 
 library(shiny)
+library(bslib)
 library(ggplot2)
 library(gridstackr)
 
-ui <- fluidPage(
+ui <- page_fluid(
   tags$h2("GridStack example"),
   gridstack(
-    options = list(minRow = 2),
-    gs_item(plotOutput("plot1", height = "100%"), w = 4),
-    gs_item(plotOutput("plot2", height = "100%"), w = 4),
-    gs_item(plotOutput("plot3", height = "100%"), w = 4),
-    gs_item(plotOutput("plot4", height = "100%"), w = 12)
+    options = list(margin = "10px", cellHeight = "140px"),
+    gs_item(value_box(
+      title = "Customer lifetime value",
+      value = "$5,000",
+      showcase = icon("bank"),
+      theme = "text-success",
+      class = "mb-0"
+    ), w = 6, h = 1),
+    gs_item(value_box(
+      title = "Customer lifetime value",
+      value = "$5,000",
+      showcase = icon("bank"),
+      theme = value_box_theme(bg = "#e6f2fd", fg = "#0B538E"),
+      class = "border mb-0"
+    ), w = 6, h = 1),
+    gs_item(
+      plotOutput("plot1", height = "100%"),
+      w = 4, h = 2, class_content = "bg-white p-2 border rounded-4"
+    ),
+    gs_item(
+      plotOutput("plot2", height = "100%"),
+      w = 4, h = 2, class_content = "bg-white p-2 border rounded-4"
+    ),
+    gs_item(
+      plotOutput("plot3", height = "100%"),
+      w = 4, h = 2, class_content = "bg-white p-2 border rounded-4"
+    ),
+    gs_item(
+      plotOutput("plot4", height = "100%"),
+      w = 12, h = 2, class_content = "bg-white p-2 border rounded-4"
+    )
   )
 )
 
@@ -31,4 +58,5 @@ server <- function(input, output, session) {
 
 }
 
-shinyApp(ui, server)
+if (interactive())
+  shinyApp(ui, server)

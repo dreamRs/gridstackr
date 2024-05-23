@@ -1,6 +1,5 @@
 
 .grid-stack-edit {
-  background: #e5e7eb;
   padding: 0.25rem;
   border-width: 1px;
   border-radius: 0.5rem;
@@ -9,8 +8,4 @@
 .grid-stack-item-edit {
   border-radius: 8px;
   cursor: pointer;
-}
-
-.grid-stack-item-content-edit {
-  background-color: white;
 }

@@ -4,12 +4,21 @@
 \alias{gridstack}
 \title{Gridstack HTMLwidget}
 \usage{
-gridstack(..., options = list(), width = NULL, height = NULL, elementId = NULL)
+gridstack(
+  ...,
+  options = list(),
+  bg = "#e5e7eb",
+  width = NULL,
+  height = NULL,
+  elementId = NULL
+)
 }
 \arguments{
 \item{...}{Items created with \code{\link[=gs_item]{gs_item()}} to be placed in the grid.}
 
 \item{options}{List of options for the grid.}
+
+\item{bg}{Background color.}
 
 \item{width}{Fixed width for widget (in css units). The default is
 \code{NULL}, which results in intelligent automatic sizing based on the
