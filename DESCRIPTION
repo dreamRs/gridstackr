@@ -15,4 +15,5 @@ Imports:
     shiny
 Suggests:
     bslib,
+    data.table,
     ggplot2

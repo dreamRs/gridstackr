@@ -28,6 +28,15 @@ HTMLWidgets.widget({
           window.dispatchEvent(new Event("resize"));
         });
 
+        if (HTMLWidgets.shinyMode) {
+          var serializedFull = grid.save(true, true);
+          Shiny.setInputValue(el.id + "_layout", serializedFull);
+          grid.on("change", function(event, items) {
+            serializedFull = grid.save(true, true);
+            Shiny.setInputValue(el.id + "_layout", serializedFull);
+          });
+        }
+
       },
 
       getWidget: function() {

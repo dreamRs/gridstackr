@@ -5,7 +5,13 @@
   border-radius: 0.5rem;
 }
 
-.grid-stack-item-edit {
+.gs-item-example {
   border-radius: 8px;
+  border: 1px solid red;
+  background: #FFF;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }

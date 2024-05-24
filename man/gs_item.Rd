@@ -17,6 +17,7 @@ gs_item(
   locked = NULL,
   noResize = NULL,
   noMove = NULL,
+  id = NULL,
   class_item = NULL,
   class_content = NULL,
   style_item = NULL,
@@ -38,6 +39,8 @@ The widget can still be dragged or resized by the user. You need to add noResize
 \item{noResize}{disable element resizing.}
 
 \item{noMove}{disable element moving.}
+
+\item{id}{Good for quick identification (for example in change event).}
 
 \item{class_item, class_content, style_item, style_content}{CSS class or CSS styles to apply to the item container or the content.}
 }
