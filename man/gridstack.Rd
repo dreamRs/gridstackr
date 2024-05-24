@@ -16,6 +16,7 @@ gridstack(
   maxRow = 0,
   minRow = 0,
   removable = FALSE,
+  trash_id = NULL,
   resize_handles = "se",
   class = NULL,
   options = list(),
@@ -60,6 +61,8 @@ Default is 0. You can also do this with min-height CSS attribute on the grid div
 
 \item{removable}{If true widgets could be removed by dragging outside of the grid.
 It could also be a selector string, in this case widgets will be removed by dropping them there (default: false).}
+
+\item{trash_id}{ID of the trash container, see \code{\link[=gs_trash]{gs_trash()}}, if used then \code{removable} is ignored.}
 
 \item{resize_handles}{Cn be any combo of n,ne,e,se,s,sw,w,nw or all.}
 

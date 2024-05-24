@@ -13,6 +13,9 @@ gs_proxy_add(proxy, item, options = list())
 
 \item{options}{List of options for the item, like in \code{\link[=gs_item]{gs_item()}}.}
 }
+\value{
+A \code{\link[=gridstack_proxy]{gridstack_proxy()}} object.
+}
 \description{
 Add an item to a gridstack via proxy
 }
@@ -35,7 +38,7 @@ ui <- page_fluid(
 server <- function(input, output, session) {
 
   output$mygrid <- renderGridstack({
-    gridstack(options = list(minRow = 2))
+    gridstack(minRow = 2)
   })
 
   observeEvent(input$add_plot1, {

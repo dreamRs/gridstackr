@@ -22,6 +22,7 @@
 #'  Default is 0. You can also do this with min-height CSS attribute on the grid div in pixels, which will round to the closest row.
 #' @param removable If true widgets could be removed by dragging outside of the grid.
 #'  It could also be a selector string, in this case widgets will be removed by dropping them there (default: false).
+#' @param trash_id ID of the trash container, see [gs_trash()], if used then `removable` is ignored.
 #' @param resize_handles Cn be any combo of n,ne,e,se,s,sw,w,nw or all.
 #' @param class Additional class on top of '.grid-stack' to differentiate this instance.
 #' @param options List of options for the grid.
@@ -45,6 +46,7 @@ gridstack <- function(...,
                       maxRow = 0,
                       minRow = 0,
                       removable = FALSE,
+                      trash_id = NULL,
                       resize_handles = "se",
                       class = NULL,
                       options = list(),
@@ -69,7 +71,7 @@ gridstack <- function(...,
       margin = margin,
       maxRow = maxRow,
       minRow = minRow,
-      removable = removable,
+      removable = if (!is.null(trash_id)) paste0("#", trash_id) else removable,
       resizable = list(handles = resize_handles)
     )), options),
     bg = bg

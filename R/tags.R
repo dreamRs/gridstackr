@@ -59,3 +59,50 @@ gs_item <- function(...,
     )
   )
 }
+
+
+
+#' Trash container
+#'
+#' Drag items from a GridStack to remove them
+#'
+#' @param id ID of the container.
+#' @param label,icon Text and icon to be displayed inside the container.
+#' @param color,bg Text and background colors.
+#' @param fontSize Font size.
+#' @param ... Other elements passed to tag object.
+#' @param height,width Height and width for the container.
+#'
+#' @return An HTML tag that can be used in a UI.
+#' @export
+#'
+#' @importFrom htmltools tags css validateCssUnit
+#'
+#' @example examples/shiny-trash.R
+gs_trash <- function(id,
+                     label = NULL,
+                     icon = shiny::icon("trash", class = "fa-2x"),
+                     color = "rgba(255, 0, 0, 0.9)",
+                     bg = "rgba(255, 0, 0, 0.1)",
+                     fontSize = "x-large",
+                     ...,
+                     height = "250px",
+                     width = "100%") {
+  tags$div(
+    id = id,
+    class = "gs-trash",
+    style = css(
+      background = bg,
+      color = color,
+      height = validateCssUnit(height),
+      width = validateCssUnit(width),
+      fontSize = fontSize
+    ),
+    tags$div(icon),
+    tags$div(label),
+    ...
+  )
+}
+
+
+

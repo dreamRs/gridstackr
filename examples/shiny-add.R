@@ -16,7 +16,7 @@ ui <- page_fluid(
 server <- function(input, output, session) {
 
   output$mygrid <- renderGridstack({
-    gridstack(options = list(minRow = 2))
+    gridstack(minRow = 2)
   })
 
   observeEvent(input$add_plot1, {

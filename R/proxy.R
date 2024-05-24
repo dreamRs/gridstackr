@@ -64,7 +64,7 @@ gridstack_proxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()
 #' @param item The item to be added.
 #' @param options List of options for the item, like in [gs_item()].
 #'
-#' @return
+#' @return A [gridstack_proxy()] object.
 #' @export
 #'
 #' @importFrom shiny insertUI exprToFunction renderPlot

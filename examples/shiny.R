@@ -7,7 +7,8 @@ library(gridstackr)
 ui <- page_fluid(
   tags$h2("GridStack example"),
   gridstack(
-    options = list(margin = "10px", cellHeight = "140px"),
+    margin = "10px",
+    cellHeight = "140px",
     gs_item(value_box(
       title = "Customer lifetime value",
       value = "$5,000",
