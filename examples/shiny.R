@@ -9,6 +9,7 @@ ui <- page_fluid(
   gridstack(
     margin = "10px",
     cellHeight = "140px",
+    float = TRUE,
     gs_item(value_box(
       title = "Customer lifetime value",
       value = "$5,000",

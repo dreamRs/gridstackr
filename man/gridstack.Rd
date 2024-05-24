@@ -10,6 +10,7 @@ gridstack(
   animate = TRUE,
   cellHeight = "auto",
   column = 12,
+  float = FALSE,
   disableDrag = FALSE,
   disableResize = FALSE,
   margin = 10,
@@ -43,6 +44,8 @@ gridstack(
 }}
 
 \item{column}{Number of columns, default to 12.}
+
+\item{float}{Enable floating widgets (default: false).}
 
 \item{disableDrag}{Disallows dragging of widgets (default: false).}
 

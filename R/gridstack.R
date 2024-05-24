@@ -12,6 +12,7 @@
 #'   * auto - height will be calculated for square cells (width / column) and updated live as you resize the window
 #'   * initial - similar to 'auto' (start at square cells) but stay that size during window resizing.
 #' @param column Number of columns, default to 12.
+#' @param float Enable floating widgets (default: false).
 #' @param disableDrag Disallows dragging of widgets (default: false).
 #' @param disableResize Disallows resizing of widgets (default: false).
 #' @param margin Gap size around grid item and content (default: 10). Can be:
@@ -40,6 +41,7 @@ gridstack <- function(...,
                       animate = TRUE,
                       cellHeight = "auto",
                       column = 12,
+                      float = FALSE,
                       disableDrag = FALSE,
                       disableResize = FALSE,
                       margin = 10,
@@ -66,6 +68,7 @@ gridstack <- function(...,
       cellHeight = cellHeight,
       column = column,
       class = class,
+      float = float,
       disableDrag = disableDrag,
       disableResize = disableResize,
       margin = margin,
