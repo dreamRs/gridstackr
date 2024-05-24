@@ -64,6 +64,46 @@ if (HTMLWidgets.shinyMode) {
     }
   });
 
+  // compact layout
+  Shiny.addCustomMessageHandler("gridstackr-compact", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      grid.compact(obj.data);
+    }
+  });
+
+  // disable
+  Shiny.addCustomMessageHandler("gridstackr-disable", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      grid.disable();
+    }
+  });
+
+  // enable
+  Shiny.addCustomMessageHandler("gridstackr-enable", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      grid.enable();
+    }
+  });
+
+  // enableMove
+  Shiny.addCustomMessageHandler("gridstackr-enable-move", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      grid.enableMove(obj.data.doEnable);
+    }
+  });
+
+  // enableResize
+  Shiny.addCustomMessageHandler("gridstackr-enable-resize", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      grid.enableResize(obj.data.doEnable);
+    }
+  });
+
 }
 
 

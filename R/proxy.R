@@ -95,3 +95,52 @@ gs_proxy_add <- function(proxy, item, options = list()) {
 
 
 
+
+#' Proxy methods
+#'
+#' Call those functions from the server of an application to interact with a GridStack.
+#'
+#' @param proxy Result of [gridstack_proxy()] or a character with the ID of the grid.
+#' @param layout re-layout grid items to reclaim any empty space. Options are:
+#'   * 'list' keep the widget left->right order the same, even if that means leaving an empty slot if things don't fit
+#'   * 'compact' might re-order items to fill any empty space.
+#' @param doEnable Enables/disables widget moving or resizing.
+#'
+#' @return A [gridstack_proxy()] object.
+#' @export
+#'
+#' @name proxy-methods
+#'
+#' @example examples/proxy-methods.R
+gs_proxy_compact <- function(proxy, layout = c("list", "compact")) {
+  .gs_proxy(proxy, "compact", list(layout = match.arg(layout)))
+}
+
+#' @export
+#'
+#' @rdname proxy-methods
+gs_proxy_enable <- function(proxy) {
+  .gs_proxy(proxy, "enable", list())
+}
+
+#' @export
+#'
+#' @rdname proxy-methods
+gs_proxy_disable <- function(proxy) {
+  .gs_proxy(proxy, "disable", list())
+}
+
+#' @export
+#'
+#' @rdname proxy-methods
+gs_proxy_enable_move <- function(proxy, doEnable = TRUE) {
+  .gs_proxy(proxy, "enable-move", list(doEnable = isTRUE(doEnable)))
+}
+
+#' @export
+#'
+#' @rdname proxy-methods
+gs_proxy_enable_resize <- function(proxy, doEnable = TRUE) {
+  .gs_proxy(proxy, "enable-resize", list(doEnable = isTRUE(doEnable)))
+}
+
