@@ -6,6 +6,18 @@
 \usage{
 gridstack(
   ...,
+  alwaysShowResizeHandle = FALSE,
+  animate = TRUE,
+  cellHeight = "auto",
+  column = 12,
+  disableDrag = FALSE,
+  disableResize = FALSE,
+  margin = 10,
+  maxRow = 0,
+  minRow = 0,
+  removable = FALSE,
+  resize_handles = "se",
+  class = NULL,
   options = list(),
   bg = "#e5e7eb",
   width = NULL,
@@ -15,6 +27,43 @@ gridstack(
 }
 \arguments{
 \item{...}{Items created with \code{\link[=gs_item]{gs_item()}} to be placed in the grid.}
+
+\item{alwaysShowResizeHandle}{Always show or not the resizing handles.}
+
+\item{animate}{Turns animation on to smooth transitions.}
+
+\item{cellHeight}{One cell height. Can be:
+\itemize{
+\item an integer (px)
+\item a string (ex: '100px', '10em', '10rem', '10cm'). Note: \% doesn't right
+\item 0, in which case the library will not generate styles for rows. Everything must be defined in your own CSS files.
+\item auto - height will be calculated for square cells (width / column) and updated live as you resize the window
+\item initial - similar to 'auto' (start at square cells) but stay that size during window resizing.
+}}
+
+\item{column}{Number of columns, default to 12.}
+
+\item{disableDrag}{Disallows dragging of widgets (default: false).}
+
+\item{disableResize}{Disallows resizing of widgets (default: false).}
+
+\item{margin}{Gap size around grid item and content (default: 10). Can be:
+\itemize{
+\item an integer (px)
+\item a string (ex: '2em', '20px', '2rem')
+}}
+
+\item{maxRow}{Maximum rows amount. Default is 0 which means no max.}
+
+\item{minRow}{Minimum rows amount which is handy to prevent grid from collapsing when empty.
+Default is 0. You can also do this with min-height CSS attribute on the grid div in pixels, which will round to the closest row.}
+
+\item{removable}{If true widgets could be removed by dragging outside of the grid.
+It could also be a selector string, in this case widgets will be removed by dropping them there (default: false).}
+
+\item{resize_handles}{Cn be any combo of n,ne,e,se,s,sw,w,nw or all.}
+
+\item{class}{Additional class on top of '.grid-stack' to differentiate this instance.}
 
 \item{options}{List of options for the grid.}
 
@@ -38,6 +87,7 @@ Mobile-friendly modern Typescript library for dashboard layout and creation. Mak
 \examples{
 library(gridstackr)
 
+# Built a grid specifying only items width
 gridstack(
   gs_item("1", w = 4, class_content = "gs-item-example"),
   gs_item("2", w = 4, class_content = "gs-item-example"),
@@ -45,13 +95,32 @@ gridstack(
   gs_item("4", w = 12, class_content = "gs-item-example")
 )
 
+# Specify positions
 gridstack(
-  options = list(minRow = 2, margin = "0.2rem"),
+  minRow = 2,
+  margin = "0.2rem",
   gs_item("1", w = 4, h = 2, class_content = "gs-item-example"),
   gs_item("2", w = 5, class_content = "gs-item-example"),
   gs_item("3", w = 5, x = 4, y = 2, class_content = "gs-item-example"),
   gs_item("4", h = 2, w = 3, class_content = "gs-item-example"),
   gs_item("5", w = 6, x = 0, y = 3, class_content = "gs-item-example"),
   gs_item("6", w = 6, x = 6, y = 3, class_content = "gs-item-example")
+)
+
+# Show several resize handlers
+gridstack(
+  resize_handles = "se,e,s",
+  gs_item("1", w = 4, class_content = "gs-item-example"),
+  gs_item("2", w = 4, class_content = "gs-item-example"),
+  gs_item("3", w = 4, class_content = "gs-item-example"),
+  gs_item("4", w = 12, class_content = "gs-item-example")
+)
+# Or show all
+gridstack(
+  resize_handles = "all",
+  gs_item("1", w = 4, class_content = "gs-item-example"),
+  gs_item("2", w = 4, class_content = "gs-item-example"),
+  gs_item("3", w = 4, class_content = "gs-item-example"),
+  gs_item("4", w = 12, class_content = "gs-item-example")
 )
 }

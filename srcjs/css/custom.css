@@ -15,3 +15,9 @@
   justify-content: center;
   font-weight: bold;
 }
+
+.gs-trash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
