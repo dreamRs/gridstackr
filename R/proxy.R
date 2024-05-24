@@ -95,6 +95,29 @@ gs_proxy_add <- function(proxy, item, options = list()) {
 
 
 
+#' Remove items from gridstack via proxy
+#'
+#' @param proxy Result of [gridstack_proxy()] or a character with the ID of the grid.
+#' @param id Identifier of the item to be removed.
+#'
+#' @return A [gridstack_proxy()] object.
+#' @export
+#'
+#' @name proxy-remove
+#'
+#' @example examples/shiny-remove.R
+gs_proxy_remove_all <- function(proxy) {
+  .gs_proxy(proxy, "remove-all", list())
+}
+
+#' @export
+#'
+#' @rdname proxy-remove
+gs_proxy_remove_item <- function(proxy, id) {
+  .gs_proxy(proxy, "remove-widget", list(id = id))
+}
+
+
 
 #' Proxy methods
 #'

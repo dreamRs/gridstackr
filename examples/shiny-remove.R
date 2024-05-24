@@ -1,0 +1,53 @@
+
+library(shiny)
+library(bslib)
+library(gridstackr)
+
+ui <- page_fluid(
+  tags$h2("Add items GridStack example"),
+  gridstackOutput("mygrid"),
+  actionButton("add", "Add"),
+  actionButton("remove_last", "Remove latest"),
+  actionButton("remove_all", "Remove all")
+)
+
+server <- function(input, output, session) {
+
+  output$mygrid <- renderGridstack({
+    gridstack(minRow = 2)
+  })
+
+  value <- reactiveVal(0)
+
+  observeEvent(input$add, {
+    newValue <- value() + 1
+    gs_proxy_add(
+      "mygrid",
+      tags$div(
+        class = "gs-item-example",
+        style = "height: 100%;",
+        newValue
+      ),
+      list(id = paste0("item_", newValue))
+    )
+    value(newValue)
+  })
+
+  observeEvent(input$remove_last, {
+    value <- value()
+    req(value > 0)
+    gs_proxy_remove_item("mygrid", id = paste0("item_", value))
+    newValue <- value() - 1
+    value(newValue)
+  })
+
+  observeEvent(input$remove_all, {
+    gs_proxy_remove_all("mygrid")
+    value(0)
+  })
+
+
+}
+
+if (interactive())
+  shinyApp(ui, server)

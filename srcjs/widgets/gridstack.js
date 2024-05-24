@@ -104,6 +104,24 @@ if (HTMLWidgets.shinyMode) {
     }
   });
 
+  // removeAll
+  Shiny.addCustomMessageHandler("gridstackr-remove-all", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      grid.removeAll();
+    }
+  });
+
+  // removeWidget
+  Shiny.addCustomMessageHandler("gridstackr-remove-widget", function(obj) {
+    var grid = utils.getWidget(obj.id);
+    if (typeof grid != "undefined") {
+      var container = document.getElementById(obj.id);
+      var el = container.querySelector("div[gs-id='" + obj.data.id + "']");
+      grid.removeWidget(el)
+    }
+  });
+
 }
 
 
