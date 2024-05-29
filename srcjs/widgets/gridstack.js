@@ -27,6 +27,18 @@ HTMLWidgets.widget({
         grid.on("resizestop", function(event, el) {
           window.dispatchEvent(new Event("resize"));
         });
+        if (HTMLWidgets.shinyMode) {
+          var $all = $(el);
+          Shiny.bindAll($all);
+        }
+        grid.on("added", function(event, items) {
+          if (HTMLWidgets.shinyMode) {
+            items.forEach(function(item) {
+              var $item = $(item);
+              Shiny.bindAll($item);
+            });
+          }
+        });
 
         if (HTMLWidgets.shinyMode) {
           var serializedFull = grid.save(true, true);
