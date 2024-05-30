@@ -30,6 +30,7 @@
 #' @param bg Background color.
 #' @inheritParams htmlwidgets::createWidget
 #'
+#'
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @importFrom htmltools renderTags
 #'
@@ -102,35 +103,30 @@ gridstack <- function(...,
   )
 }
 
-#' #' @importFrom htmltools tags
-#' gridstack_html <- function(id, style, class, ...) {
-#'   tags$div(
-#'     id = id,
-#'     class = class,
-#'     class = "grid-stack",
-#'     style = style,
-#'     ...
-#'   )
-#' }
 
-#' Shiny bindings for gridstack
+
+
+
+#' @title Shiny bindings for gridstack
 #'
+#' @description
 #' Output and render functions for using gridstack within Shiny
 #' applications and interactive Rmd documents.
 #'
-#' @param outputId output variable to read from
-#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
-#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-#'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a gridstack
-#' @param env The environment in which to evaluate \code{expr}.
-#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
-#'   is useful if you want to save an expression in a variable.
+#' @inheritParams htmlwidgets::shinyWidgetOutput
+#' @inheritParams htmlwidgets::shinyRenderWidget
+#'
+#' @note
+#' The GridStack layout can be retrieved via the special shiny input `input$<outputId>_layout`.
 #'
 #' @name gridstack-shiny
 #' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
 #' @export
-gridstackOutput <- function(outputId, width = "100%", height = "400px"){
+#'
+#' @example examples/shiny.R
+#'
+#' @example examples/shiny-input.R
+gridstackOutput <- function(outputId, width = "100%", height = "400px") {
   htmlwidgets::shinyWidgetOutput(outputId, "gridstack", width, height, package = "gridstackr")
 }
 

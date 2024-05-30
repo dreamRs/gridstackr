@@ -13,8 +13,10 @@ RoxygenNote: 7.3.1
 Imports: 
     htmltools,
     htmlwidgets,
+    rlang,
     shiny
 Suggests:
     bslib,
     data.table,
-    ggplot2
+    ggplot2,
+    patchwork
