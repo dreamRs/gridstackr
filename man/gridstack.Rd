@@ -22,6 +22,7 @@ gridstack(
   class = NULL,
   options = list(),
   bg = "#e5e7eb",
+  list_items = NULL,
   width = NULL,
   height = NULL,
   elementId = NULL
@@ -74,6 +75,8 @@ It could also be a selector string, in this case widgets will be removed by drop
 \item{options}{List of options for the grid.}
 
 \item{bg}{Background color.}
+
+\item{list_items}{A \code{list} of items created with \code{\link[=gs_item]{gs_item()}} to be placed in the grid. An alternative to \code{...} to specify items.}
 
 \item{width}{Fixed width for widget (in css units). The default is
 \code{NULL}, which results in intelligent automatic sizing based on the

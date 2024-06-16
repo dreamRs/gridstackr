@@ -28,6 +28,7 @@
 #' @param class Additional class on top of '.grid-stack' to differentiate this instance.
 #' @param options List of options for the grid.
 #' @param bg Background color.
+#' @param list_items A `list` of items created with [gs_item()] to be placed in the grid. An alternative to `...` to specify items.
 #' @inheritParams htmlwidgets::createWidget
 #'
 #'
@@ -54,11 +55,12 @@ gridstack <- function(...,
                       class = NULL,
                       options = list(),
                       bg = "#e5e7eb",
+                      list_items = NULL,
                       width = NULL,
                       height = NULL,
                       elementId = NULL) {
 
-  items <- list(...)
+  items <- c(list(...), list_items)
   rendered_items <- renderTags(x = items)
 
   x <- list(
