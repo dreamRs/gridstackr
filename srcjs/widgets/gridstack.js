@@ -1,5 +1,6 @@
 import "widgets";
 import "gridstack/dist/gridstack.min.css";
+import "gridstack/dist/gridstack-extra.min.css";
 import { GridStack } from "gridstack";
 import "../css/custom.css";
 import * as utils from "../modules/utils";
