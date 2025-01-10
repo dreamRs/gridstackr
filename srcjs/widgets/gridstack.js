@@ -11,13 +11,13 @@ HTMLWidgets.widget({
 
   type: "output",
 
-  factory: function(el, width, height) {
+  factory: function (el, width, height) {
 
     var grid;
 
     return {
 
-      renderValue: function(x) {
+      renderValue: function (x) {
 
         el.classList.add("grid-stack");
         el.classList.add("grid-stack-edit");
@@ -25,17 +25,19 @@ HTMLWidgets.widget({
         el.innerHTML = x.html;
 
         grid = GridStack.init(x.options, el);
-        grid.on("resizestop", function(event, el) {
+        grid.on("resizestop", function (event, el) {
           window.dispatchEvent(new Event("resize"));
         });
         if (HTMLWidgets.shinyMode) {
           var $all = $(el);
+          Shiny.initializeInputs($all);
           Shiny.bindAll($all);
         }
-        grid.on("added", function(event, items) {
+        grid.on("added", function (event, items) {
           if (HTMLWidgets.shinyMode) {
-            items.forEach(function(item) {
+            items.forEach(function (item) {
               var $item = $(item);
+              Shiny.initializeInputs($item);
               Shiny.bindAll($item);
             });
           }
@@ -44,7 +46,7 @@ HTMLWidgets.widget({
         if (HTMLWidgets.shinyMode) {
           var serializedFull = grid.save(true, true);
           Shiny.setInputValue(el.id + "_layout", serializedFull);
-          grid.on("added removed change", function(event, items) {
+          grid.on("added removed change", function (event, items) {
             serializedFull = grid.save(true, true);
             Shiny.setInputValue(el.id + "_layout", serializedFull);
           });
@@ -52,11 +54,11 @@ HTMLWidgets.widget({
 
       },
 
-      getWidget: function() {
+      getWidget: function () {
         return grid;
       },
 
-      resize: function(width, height) {
+      resize: function (width, height) {
 
         // TODO: code to re-render the widget with a new size
 
@@ -70,7 +72,7 @@ HTMLWidgets.widget({
 if (HTMLWidgets.shinyMode) {
 
   // add a widget
-  Shiny.addCustomMessageHandler("gridstackr-add-widget", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-add-widget", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.addWidget(obj.data.options);
@@ -78,7 +80,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // compact layout
-  Shiny.addCustomMessageHandler("gridstackr-compact", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-compact", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.compact(obj.data);
@@ -86,7 +88,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // disable
-  Shiny.addCustomMessageHandler("gridstackr-disable", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-disable", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.disable();
@@ -94,7 +96,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // enable
-  Shiny.addCustomMessageHandler("gridstackr-enable", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-enable", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.enable();
@@ -102,7 +104,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // enableMove
-  Shiny.addCustomMessageHandler("gridstackr-enable-move", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-enable-move", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.enableMove(obj.data.doEnable);
@@ -110,7 +112,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // enableResize
-  Shiny.addCustomMessageHandler("gridstackr-enable-resize", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-enable-resize", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.enableResize(obj.data.doEnable);
@@ -118,7 +120,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // removeAll
-  Shiny.addCustomMessageHandler("gridstackr-remove-all", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-remove-all", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.removeAll();
@@ -126,7 +128,7 @@ if (HTMLWidgets.shinyMode) {
   });
 
   // removeWidget
-  Shiny.addCustomMessageHandler("gridstackr-remove-widget", function(obj) {
+  Shiny.addCustomMessageHandler("gridstackr-remove-widget", function (obj) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       var container = document.getElementById(obj.id);
