@@ -10,7 +10,7 @@ create_design(grid_layout)
 \item{grid_layout}{Layout of the GridStack retrieved via \verb{input$<outputId>_layout}.}
 }
 \value{
-An expression that can be evaluated to create a design usable in {patchwork}.
+An expression that can be evaluated to create a design usable in package \href{https://github.com/thomasp85/patchwork/}{patchwork}.
 }
 \description{
 Create a patchwork design

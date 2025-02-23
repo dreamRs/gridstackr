@@ -1,9 +1,10 @@
 
 #' Create a patchwork design
 #'
+#'
 #' @param grid_layout Layout of the GridStack retrieved via `input$<outputId>_layout`.
 #'
-#' @return An expression that can be evaluated to create a design usable in {patchwork}.
+#' @return An expression that can be evaluated to create a design usable in package [patchwork](https://github.com/thomasp85/patchwork/).
 #' @export
 #'
 #' @importFrom rlang expr %||%
