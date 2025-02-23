@@ -5,6 +5,10 @@ import { GridStack } from "gridstack";
 import "../css/custom.css";
 import * as utils from "../modules/utils";
 
+GridStack.renderCB = function(el, w) {
+  el.innerHTML = w.content;
+};
+
 HTMLWidgets.widget({
 
   name: "gridstack",
@@ -76,6 +80,10 @@ if (HTMLWidgets.shinyMode) {
     var grid = utils.getWidget(obj.id);
     if (typeof grid != "undefined") {
       grid.addWidget(obj.data.options);
+      setTimeout(function() {
+        var el = document.getElementById(obj.data.id);
+        el.dispatchEvent(new Event("resize"));
+      }, 500);
     }
   });
 

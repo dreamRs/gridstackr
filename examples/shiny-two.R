@@ -26,38 +26,48 @@ server <- function(input, output, session) {
     gridstack(
       margin = "10px",
       cellHeight = "140px",
-      column = 1,
+      column = 3,
       options = list(
         acceptWidgets = TRUE,
         dragOut = TRUE
       ),
-      gs_item(value_box(
-        title = "Customer lifetime value",
-        value = "$5,000",
-        showcase = icon("bank"),
-        theme = "text-success",
-        class = "mb-0"
-      )),
-      gs_item(value_box(
-        title = "Customer lifetime value",
-        value = "$5,000",
-        showcase = icon("bank"),
-        theme = value_box_theme(bg = "#e6f2fd", fg = "#0B538E"),
-        class = "border mb-0"
-      )),
       gs_item(
+        w = 3,
+        value_box(
+          title = "Customer lifetime value",
+          value = "$5,000",
+          showcase = icon("bank"),
+          theme = "text-success",
+          class = "mb-0"
+        )
+      ),
+      gs_item(
+        w = 3,
+        value_box(
+          title = "Customer lifetime value",
+          value = "$5,000",
+          showcase = icon("bank"),
+          theme = value_box_theme(bg = "#e6f2fd", fg = "#0B538E"),
+          class = "border mb-0"
+        )
+      ),
+      gs_item(
+        w = 3,
         plotOutput("plot1", height = "100%"),
         class_content = "bg-white p-2 border rounded-4"
       ),
       gs_item(
+        w = 3,
         plotOutput("plot2", height = "100%"),
         class_content = "bg-white p-2 border rounded-4"
       ),
       gs_item(
+        w = 3,
         plotOutput("plot3", height = "100%"),
         class_content = "bg-white p-2 border rounded-4"
       ),
       gs_item(
+        w = 3,
         plotOutput("plot4", height = "100%"),
         class_content = "bg-white p-2 border rounded-4"
       )
@@ -67,6 +77,7 @@ server <- function(input, output, session) {
   output$grid2 <- renderGridstack({
     gridstack(
       minRow = 3,
+      column = 6,
       cellHeight = "140px",
       options = list(
         acceptWidgets = TRUE,
@@ -78,7 +89,6 @@ server <- function(input, output, session) {
   output$plot1 <- renderPlot({
     ggplot(mtcars) + geom_point(aes(mpg, disp))
   })
-  outputOptions(output, "plot1", suspendWhenHidden = TRUE)
   output$plot2 <- renderPlot({
     ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))
   })

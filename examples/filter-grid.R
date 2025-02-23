@@ -20,12 +20,13 @@ card_pkg <- function(.list) {
       tags$div(.list$Description)
     ),
     fill = FALSE,
-    height = "100%"
+    height = "100%",
+    class = "mb-0"
   )
 }
 
 item_pkg <- function(pkg) {
-  gs_item(card_pkg(pkg), w = 3, id = pkg$Package)
+  gs_item(card_pkg(pkg), w = 3, id = pkg$Package, sizeToContent = TRUE)
 }
 item_pkg_all <- function(pkgs) {
   lapply(

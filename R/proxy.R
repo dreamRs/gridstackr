@@ -81,7 +81,7 @@ gs_proxy_add <- function(proxy, item, options = list()) {
   .gs_proxy(
     proxy = proxy,
     name = "add-widget",
-    l = list(options = options)
+    l = list(options = options, id = paste0("grid-stack-item-content-", ID))
   )
   if (inherits(item, "ggplot")) {
     gg_fun <- exprToFunction(item, parent.frame(), FALSE)
