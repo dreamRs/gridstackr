@@ -8,12 +8,17 @@
 #'   chart to modify (if invoked from a Shiny module, the namespace will be added
 #'   automatically)
 #' @param session the Shiny session object to which the chart belongs; usually the
-#'   default value will suffice
+#'   default value will suffice.
+#'
+#' @return A [gridstack_proxy()] object, that can be used with proxy methods.
+#'
+#' @seealso [gs_proxy_add()], [gs_proxy_remove_item()], [gs_proxy_compact()], [gs_proxy_disable()].
 #'
 #' @export
 #'
 #' @importFrom shiny getDefaultReactiveDomain
 #'
+#' @example examples/proxy-methods.R
 gridstack_proxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
 
   if (is.null(session)) {

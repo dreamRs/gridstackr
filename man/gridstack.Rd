@@ -90,6 +90,9 @@ widget's container.}
 automatically generated one). Useful if you have other JavaScript that
 needs to explicitly discover and interact with a specific widget instance.}
 }
+\value{
+A gridstack HTMLwidget object.
+}
 \description{
 Mobile-friendly modern Typescript library for dashboard layout and creation. Making a drag-and-drop, multi-column responsive dashboard has never been easier.
 }

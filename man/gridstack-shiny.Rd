@@ -25,6 +25,9 @@ string and have \code{"px"} appended.}
 \item{quoted}{Is \code{expr} a quoted expression (with \code{quote()})? This
 is useful if you want to save an expression in a variable.}
 }
+\value{
+\code{gridstackOutput} returns a UI definition, \code{renderGridstack} is used to create associated output in shiny server.
+}
 \description{
 Output and render functions for using gridstack within Shiny
 applications and interactive Rmd documents.

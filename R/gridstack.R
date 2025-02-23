@@ -31,6 +31,7 @@
 #' @param list_items A `list` of items created with [gs_item()] to be placed in the grid. An alternative to `...` to specify items.
 #' @inheritParams htmlwidgets::createWidget
 #'
+#' @return A gridstack HTMLwidget object.
 #'
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @importFrom htmltools renderTags
@@ -118,6 +119,8 @@ gridstack <- function(...,
 #' @inheritParams htmlwidgets::shinyWidgetOutput
 #' @inheritParams htmlwidgets::shinyRenderWidget
 #'
+#' @return `gridstackOutput` returns a UI definition, `renderGridstack` is used to create associated output in shiny server.
+#'
 #' @note
 #' The GridStack layout can be retrieved via the special shiny input `input$<outputId>_layout`.
 #'
@@ -129,12 +132,12 @@ gridstack <- function(...,
 #'
 #' @example examples/shiny-input.R
 gridstackOutput <- function(outputId, width = "100%", height = "400px") {
-  htmlwidgets::shinyWidgetOutput(outputId, "gridstack", width, height, package = "gridstackr")
+  shinyWidgetOutput(outputId, "gridstack", width, height, package = "gridstackr")
 }
 
 #' @rdname gridstack-shiny
 #' @export
 renderGridstack <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, gridstackOutput, env, quoted = TRUE)
+  shinyRenderWidget(expr, gridstackOutput, env, quoted = TRUE)
 }
