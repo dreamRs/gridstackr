@@ -1,10 +1,11 @@
 Package: gridstackr
 Title: Interactive Grid Layout with the JavaScript 'GridStack' Library
-Version: 0.0.1
+Version: 0.0.1.9000
 Authors@R: c(
   person("Victor", "Perrier", email = "victor.perrier@dreamrs.fr", role = c("aut", "cre")),
   person("Fanny", "Meyer", role = "aut"))
-Description: Create movable and resizeable grid layout in 'Shiny' application.
+Description: Create movable and resizeable grid layout in 'Shiny' application with the 'GridStack'
+  'JavaScript' library that can be modified on the server via a proxy method. 
   'GridStack' examples and documentation are available here: <https://gridstackjs.com/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
