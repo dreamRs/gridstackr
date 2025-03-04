@@ -1,4 +1,4 @@
-# gridstackr 0.0.0.9000 (dev)
+# gridstackr 0.0.2
 
 * Create movable and resizeable grid layout in 'Shiny' application with the 'GridStack' 
   'JavaScript' library that can be modified on the server via a proxy method. 

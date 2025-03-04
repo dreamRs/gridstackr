@@ -10,3 +10,4 @@
 ^LICENSE\.md$
 ^examples$
 ^\.github$
+^cran-comments\.md$
